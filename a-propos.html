@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Kévin Photographe</title>
+    <meta name="description" content="Découvrez mon parcours, ma philosophie et mon approche de la photographie artistique.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            padding: 2rem 0;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+        }
+
+        .about-text p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 1.8rem;
+        }
+
+        .about-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--accent-gold);
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 2px solid var(--accent-gold);
+            z-index: -1;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .philosophy-section {
+            background: var(--background-light);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .philosophy-card {
+            text-align: center;
+        }
+
+        .philosophy-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .philosophy-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 968px) {
+            .about-content,
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo">Kévin</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="a-propos.html" class="active">À Propos</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="cta-nav">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <p class="hero-subtitle">Mon Histoire</p>
+            <h1>À PROPOS</h1>
+            <p>Découvrez mon univers et ma vision de la photographie</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Photographe d'Art Basé à Laon</h2>
+                <p>Depuis plus de six années, je façonne des images qui racontent des histoires. Basé à Laon dans les Hauts-de-France, mon approche se veut authentique et intemporelle, capturant l'essence même de chaque instant.</p>
+                
+                <p>Ma passion pour la photographie est née d'un désir profond de figer l'éphémère et de révéler la beauté qui se cache dans les regards, les gestes et les émotions. Chaque séance est une nouvelle aventure créative, où technique et sensibilité artistique se rencontrent.</p>
+                
+                <p>Je travaille en étroite collaboration avec des créateurs de mode comme l'Atelier BND et j'ai eu l'honneur de couvrir des événements prestigieux tels que Miss Aisne 2023. Mon objectif est de créer des images qui traversent le temps et touchent les cœurs.</p>
+                
+                <p class="about-signature">— Kévin</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">1000+</span>
+                        <span class="stat-label">Séances Réalisées</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">250+</span>
+                        <span class="stat-label">Clients Satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Années d'Expérience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image"></div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="section-header">
+            <p class="section-label">Ma Philosophie</p>
+            <h2 class="section-title">Comment Je Travaille</h2>
+        </div>
+
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <div class="philosophy-icon">✨</div>
+                <h3>Authenticité</h3>
+                <p>Je crois en la beauté naturelle et authentique. Mes photos capturent qui vous êtes vraiment, sans artifice ni pose forcée.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">🎨</div>
+                <h3>Créativité</h3>
+                <p>Chaque séance est unique. J'adapte mon approche à votre personnalité et à vos envies pour créer des images qui vous ressemblent.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">💫</div>
+                <h3>Excellence</h3>
+                <p>Je porte une attention particulière à chaque détail, de la composition à la post-production, pour des résultats exceptionnels.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Travaillons Ensemble</h2>
+            <p>Prêt à créer des images inoubliables ?</p>
+            <a href="contact.html" class="cta-button">Réserver une séance</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kévin Photographe</h3>
+                <p>Photographe professionnel basé à Laon, spécialisé en portraits artistiques, photographie de mode et reportages.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Accueil</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="a-propos.html">À Propos</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Prestations</h3>
+                <a href="services.html#portraits">Portraits Artistiques</a>
+                <a href="services.html#mode">Photographie de Mode</a>
+                <a href="services.html#urbex">Urbex & Artistique</a>
+                <a href="services.html#reportages">Reportages</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@kevin-photographe.fr</p>
+                <p>Tél: 06 XX XX XX XX</p>
+                <p>Laon, Hauts-de-France</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kévin Photographe. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Kévin Photographe</title>
+    <meta name="description" content="Découvrez mes services : portraits artistiques, photographie de mode, urbex et reportages événementiels.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .services-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+
+        .services-detail:nth-child(even) {
+            direction: rtl;
+        }
+
+        .services-detail:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .service-image {
+            height: 500px;
+            background: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        .service-content p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .service-features li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--background-light);
+            padding: 1rem 2rem;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .price-tag strong {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 968px) {
+            .services-detail {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .services-detail:nth-child(even) {
+                direction: ltr;
+            }
+
+            .service-image {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo">Kévin</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html" class="cta-nav">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <p class="hero-subtitle">Mes Prestations</p>
+            <h1>SERVICES</h1>
+            <p>Des prestations photographiques sur mesure pour tous vos besoins</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section>
+        <!-- Service 1: Portraits -->
+        <div class="services-detail" id="portraits">
+            <div class="service-content">
+                <p class="section-label">Service 01</p>
+                <h2>Portraits Artistiques</h2>
+                <p>Séances portrait en studio ou en extérieur pour révéler votre personnalité unique. Je capture votre essence à travers des photos authentiques et intemporelles.</p>
+                <ul class="service-features">
+                    <li>Séance d'1h30 à 2h</li>
+                    <li>Studio professionnel ou extérieur</li>
+                    <li>Coaching pose et mise en confiance</li>
+                    <li>20-30 photos retouchées livrées</li>
+                    <li>Galerie privée en ligne</li>
+                </ul>
+                <div class="price-tag">
+                    À partir de <strong>180€</strong>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/c9aea040-cb67-40c1-ac73-5c8230b2293b_rwc_141x0x1637x1280x1637.jpg?h=d1a21413627f344f0a1afcc50c6fa6f4" alt="Portraits">
+            </div>
+        </div>
+
+        <!-- Service 2: Mode -->
+        <div class="services-detail" id="mode">
+            <div class="service-content">
+                <p class="section-label">Service 02</p>
+                <h2>Photographie de Mode</h2>
+                <p>Lookbooks, campagnes et collaborations créatives pour sublimer vos collections. Je travaille avec des créateurs locaux pour mettre en valeur leurs pièces uniques.</p>
+                <ul class="service-features">
+                    <li>Demi-journée ou journée complète</li>
+                    <li>Direction artistique incluse</li>
+                    <li>Collaboration avec stylistes</li>
+                    <li>50-100 photos retouchées</li>
+                    <li>Utilisation commerciale possible</li>
+                </ul>
+                <div class="price-tag">
+                    À partir de <strong>350€</strong>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/fa01808c-a864-4b0e-9c3b-6d8e0cea22d3_rwc_0x198x1365x1067x1365.jpg?h=ef7e33e8c55336f987ea9d7afa54f6f1" alt="Mode">
+            </div>
+        </div>
+
+        <!-- Service 3: Urbex -->
+        <div class="services-detail" id="urbex">
+            <div class="service-content">
+                <p class="section-label">Service 03</p>
+                <h2>Urbex & Artistique</h2>
+                <p>Séances dans des lieux abandonnés pour un rendu unique et atmosphérique. Une expérience photographique différente dans des décors hors du commun.</p>
+                <ul class="service-features">
+                    <li>Séance de 2-3h</li>
+                    <li>Repérage des lieux inclus</li>
+                    <li>Sécurité et équipement adapté</li>
+                    <li>25-40 photos retouchées</li>
+                    <li>Ambiance unique et créative</li>
+                </ul>
+                <div class="price-tag">
+                    À partir de <strong>220€</strong>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/df31d07b-24c5-40b8-8daa-a5407d0e77da_rwc_0x155x1365x1067x1365.jpg?h=66dbe8e4f8181dee2aa42741a256deab" alt="Urbex">
+            </div>
+        </div>
+
+        <!-- Service 4: Reportages -->
+        <div class="services-detail" id="reportages">
+            <div class="service-content">
+                <p class="section-label">Service 04</p>
+                <h2>Reportages Événementiels</h2>
+                <p>Couverture professionnelle de vos événements, mariages et moments importants avec discrétion et créativité. Je capture l'essence de votre événement.</p>
+                <ul class="service-features">
+                    <li>Demi-journée ou journée</li>
+                    <li>Couverture complète de l'événement</li>
+                    <li>Présence discrète et professionnelle</li>
+                    <li>100-300 photos retouchées</li>
+                    <li>Livraison rapide (7-10 jours)</li>
+                </ul>
+                <div class="price-tag">
+                    À partir de <strong>500€</strong>
+                </div>
+            </div>
+            <div class="service-image">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/efcaa777-1979-411a-8bfc-982dc9522f6e_rwc_0x136x1365x1067x1365.jpg?h=bfb8648f00dc2ff97965b22af1c880cf" alt="Événements">
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section style="background: var(--background-light); text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title">Informations Pratiques</h2>
+            <p style="font-size: 1.05rem; color: var(--text-light); margin-bottom: 2rem;">Tous mes tarifs incluent la séance, la retouche professionnelle des photos et leur livraison en haute résolution via une galerie privée en ligne.</p>
+            <p style="font-size: 0.95rem; color: var(--text-light);">Les tarifs peuvent varier selon la complexité du projet, le lieu et la durée. N'hésitez pas à me contacter pour un devis personnalisé.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à Réserver ?</h2>
+            <p>Discutons de votre projet photographique</p>
+            <a href="contact.html" class="cta-button">Me Contacter</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kévin Photographe</h3>
+                <p>Photographe professionnel basé à Laon, spécialisé en portraits artistiques, photographie de mode et reportages.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Accueil</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="a-propos.html">À Propos</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Prestations</h3>
+                <a href="services.html#portraits">Portraits Artistiques</a>
+                <a href="services.html#mode">Photographie de Mode</a>
+                <a href="services.html#urbex">Urbex & Artistique</a>
+                <a href="services.html#reportages">Reportages</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@kevin-photographe.fr</p>
+                <p>Tél: 06 XX XX XX XX</p>
+                <p>Laon, Hauts-de-France</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kévin Photographe. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
