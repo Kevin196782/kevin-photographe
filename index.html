@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kévin - Photographe Professionnel | Laon, Hauts-de-France</title>
+    <meta name="description" content="Photographe professionnel basé à Laon. Spécialisé en portraits, mode, événements et urbex. Découvrez mon portfolio et réservez votre séance photo.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #f8f8f8;
+            --accent-color: #d4af37;
+            --text-color: #333;
+            --light-gray: #e5e5e5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header.scrolled {
+            padding: 0.8rem 2rem;
+            background: rgba(26, 26, 26, 0.98);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '📸';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .cta-nav {
+            background: var(--accent-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            color: white !important;
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .cta-nav::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%23111" width="1920" height="1080"/><circle cx="960" cy="540" r="300" fill="%23222" opacity="0.5"/><circle cx="400" cy="300" r="200" fill="%23333" opacity="0.3"/><circle cx="1500" cy="700" r="250" fill="%23222" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1), transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.85;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+            box-shadow: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Section commune */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            aspect-ratio: 3/4;
+            background: #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            font-weight: 500;
+        }
+
+        .gallery-overlay p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.9rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            background: var(--accent-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-details p {
+            color: #666;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section p {
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            padding-left: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--accent-color);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: var(--primary-color);
+                flex-direction: column;
+                justify-content: start;
+                padding: 3rem 0;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.3rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">KÉVIN</div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#contact" class="cta-nav">Réserver</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>KÉVIN PHOTOGRAPHE</h1>
+            <p class="tagline">Capturer l'instant, Créer l'émotion</p>
+            <p class="subtitle">Photographe professionnel à Laon • Portraits • Mode • Événements • Urbex</p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="cta-button">Découvrir mon travail</a>
+                <a href="#contact" class="cta-button secondary">Réserver une séance</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2 class="section-title">Mon Portfolio</h2>
+        <p class="section-subtitle">Découvrez une sélection de mes meilleurs shootings photo réalisés à Laon et dans les Hauts-de-France</p>
+        
+        <div class="portfolio-filters">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="portrait">Portraits</button>
+            <button class="filter-btn" data-filter="mode">Mode</button>
+            <button class="filter-btn" data-filter="urbex">Urbex</button>
+            <button class="filter-btn" data-filter="evenement">Événements</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <!-- Alyson Pâques 2024 -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/ed6ccd6f-c4eb-4b8a-942d-2936265450d7_rwc_0x502x1365x1067x1365.jpg?h=8b7756b41823d767d3cb1bff78e40fd7" alt="Alyson Pâques">
+                <div class="gallery-overlay">
+                    <h3>Alyson Pâques</h3>
+                    <p>Portrait • 2024</p>
+                </div>
+            </div>
+
+            <!-- Saint-Valentin avec Alyson -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/a713aed9-9289-4ecc-a9ba-0752d9779a56_rwc_0x409x1365x1067x1365.jpg?h=3f3a30c937923b9da2925d47fc128b35" alt="Saint-Valentin avec Alyson">
+                <div class="gallery-overlay">
+                    <h3>Saint-Valentin avec Alyson</h3>
+                    <p>Portrait • 2024</p>
+                </div>
+            </div>
+
+            <!-- Alyson décontractée (Charlott') -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/e4f5dad3-91ef-4596-ab7e-7867caefab0d_rwc_0x291x1365x1067x1365.jpg?h=3b437998e4ad1c82e986ce80c7399c44" alt="Alyson décontractée">
+                <div class="gallery-overlay">
+                    <h3>Alyson décontractée (Charlott')</h3>
+                    <p>Portrait • 2024</p>
+                </div>
+            </div>
+
+            <!-- Le noir & blanc de Camille -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/c9aea040-cb67-40c1-ac73-5c8230b2293b_rwc_141x0x1637x1280x1637.jpg?h=d1a21413627f344f0a1afcc50c6fa6f4" alt="Le noir & blanc de Camille">
+                <div class="gallery-overlay">
+                    <h3>Le noir & blanc de Camille</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- L'image de soi d'Alicia -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/e6da2077-5e3f-4f01-96f4-3806d2307221_rwc_0x490x1365x1067x1365.jpg?h=4b337c036e4bab157ca728d2ee9dc410" alt="L'image de soi d'Alicia">
+                <div class="gallery-overlay">
+                    <h3>L'image de soi d'Alicia</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Alyson en robe de soirée (Atelier BND) -->
+            <div class="gallery-item" data-category="mode">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/fa01808c-a864-4b0e-9c3b-6d8e0cea22d3_rwc_0x198x1365x1067x1365.jpg?h=ef7e33e8c55336f987ea9d7afa54f6f1" alt="Alyson en robe de soirée">
+                <div class="gallery-overlay">
+                    <h3>Alyson en robe de soirée (Atelier BND)</h3>
+                    <p>Mode • 2023</p>
+                </div>
+            </div>
+
+            <!-- Miss Aisne 2023 -->
+            <div class="gallery-item" data-category="evenement">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/efcaa777-1979-411a-8bfc-982dc9522f6e_rwc_0x136x1365x1067x1365.jpg?h=bfb8648f00dc2ff97965b22af1c880cf" alt="Miss Aisne 2023">
+                <div class="gallery-overlay">
+                    <h3>Miss Aisne 2023 avec les robes de Atelier BND</h3>
+                    <p>Événement • 2023</p>
+                </div>
+            </div>
+
+            <!-- Alyson sur les remparts de Laon -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/1ec7d1ba-5149-4eab-a4e0-717bb6cb596a_rwc_0x459x1365x1067x1365.jpg?h=390074134204aec2a6547fb0b966853e" alt="Alyson sur les remparts de Laon">
+                <div class="gallery-overlay">
+                    <h3>Alyson sur les remparts de Laon</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Rétrospective avec Johanna -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/d692cb2c-fd68-46b3-8de0-a284664a801f_rwc_141x0x1637x1280x1637.jpg?h=f22e084ad58cee7de1eb5a63b18a5225" alt="Rétrospective avec Johanna">
+                <div class="gallery-overlay">
+                    <h3>Rétrospective avec Johanna</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Camille en lingerie -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/815204e0-1de6-42b2-94f2-f2792041d19f_rwc_0x471x1365x1067x1365.jpg?h=78a8005f38bc71afc836d3d4ba0ffec3" alt="Camille en lingerie">
+                <div class="gallery-overlay">
+                    <h3>Camille en lingerie</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Clarisse sur la montagne couronnée -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/ee7f69f1-dfe4-4b4b-9717-4dd104591cf8_rwc_0x415x1365x1067x1365.jpg?h=2a5e019752790d2eb8a94039f4b940c0" alt="Clarisse sur la montagne couronnée">
+                <div class="gallery-overlay">
+                    <h3>Clarisse sur la montagne couronnée</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Alyson sur le bord de l'Oise -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/c66fb1ee-a5e8-486d-ac4c-301e5194dfca_rwc_0x415x1365x1067x1365.jpg?h=091cfe4dd81728f62038f60e2dafb565" alt="Alyson sur le bord de l'Oise">
+                <div class="gallery-overlay">
+                    <h3>Alyson sur le bord de l'Oise</h3>
+                    <p>Portrait • 2023</p>
+                </div>
+            </div>
+
+            <!-- Camille avec les tenues de Stéphanie -->
+            <div class="gallery-item" data-category="mode">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/5f77d969-3fa3-4298-a580-7379aa113f6f_rwc_0x316x1365x1067x1365.jpg?h=0a575764b9a824703af623b70866cbe3" alt="Camille avec les tenues de Stéphanie">
+                <div class="gallery-overlay">
+                    <h3>Camille avec les tenues de Stéphanie (Atelier BND)</h3>
+                    <p>Mode • 2022</p>
+                </div>
+            </div>
+
+            <!-- Sonia -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/eddddba4-fef5-4cf9-841e-ca4f7c825fc7_rwc_0x335x1365x1067x1365.jpg?h=e1b9b21b8bf42509c829f427d26dcda1" alt="Sonia">
+                <div class="gallery-overlay">
+                    <h3>Sonia</h3>
+                    <p>Portrait • 2022</p>
+                </div>
+            </div>
+
+            <!-- Emma -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/e2099275-1c7f-4207-838d-fafea532c335_rwc_0x415x1365x1067x1365.jpg?h=2202998ed229361615cc24dc43fe7d43" alt="Emma">
+                <div class="gallery-overlay">
+                    <h3>Emma</h3>
+                    <p>Portrait • 2022</p>
+                </div>
+            </div>
+
+            <!-- Camille et Stéphanie -->
+            <div class="gallery-item" data-category="mode">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/a92e04c5-979a-46fc-8969-8d51e8529ec6_rwc_0x322x1365x1067x1365.jpg?h=45e62bbbd8a8313f0e6807153a524395" alt="Camille et Stéphanie">
+                <div class="gallery-overlay">
+                    <h3>Camille et Stéphanie</h3>
+                    <p>Mode • 2022</p>
+                </div>
+            </div>
+
+            <!-- Camille sur Strasbourg -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/f100c55c-be67-487c-b521-29294a689e55_rwc_0x688x1365x1067x1365.jpg?h=95acc96d1033bb8d2e9e912abb69ad2c" alt="Camille sur Strasbourg">
+                <div class="gallery-overlay">
+                    <h3>Camille sur Strasbourg</h3>
+                    <p>Portrait • 2022</p>
+                </div>
+            </div>
+
+            <!-- Camille couleurs d'Automne -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/a11e80eb-d987-470c-beff-e3f047070e0d_rwc_0x490x1365x1067x1365.jpg?h=9ad534508ebdd2cbab293e0103884a02" alt="Camille couleurs d'Automne">
+                <div class="gallery-overlay">
+                    <h3>Camille couleurs d'Automne</h3>
+                    <p>Portrait • 2020</p>
+                </div>
+            </div>
+
+            <!-- Camille en Cosplay -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/a849b3c0-3aee-4864-be9a-d1fdffec3f39_rwc_0x179x1365x1067x1365.jpg?h=ab9d9753a97520b1229c3f9702e537f2" alt="Camille en Cosplay">
+                <div class="gallery-overlay">
+                    <h3>Camille en Cosplay</h3>
+                    <p>Portrait • 2020</p>
+                </div>
+            </div>
+
+            <!-- La mode de Stéphanie -->
+            <div class="gallery-item" data-category="mode">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/371069e8-8b3f-4f38-ab75-0718add80e71_rwc_141x0x1637x1280x1637.jpg?h=de507cf012c1d67ba318ee393a5e9c0c" alt="La mode de Stéphanie">
+                <div class="gallery-overlay">
+                    <h3>La mode de Stéphanie</h3>
+                    <p>Mode • 2020</p>
+                </div>
+            </div>
+
+            <!-- Marie au château -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/a9a98370-7cd5-442a-81d4-bab06327801c_rwc_141x0x1637x1280x1637.jpg?h=d377bb7d38347fc9b2fa7d0cc4090186" alt="Marie au château">
+                <div class="gallery-overlay">
+                    <h3>Marie au château</h3>
+                    <p>Portrait • 2019</p>
+                </div>
+            </div>
+
+            <!-- Laurane au bord de l'Oise -->
+            <div class="gallery-item" data-category="portrait">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/66f90291-fe49-45b2-975b-fb992abe674d_rwc_0x490x1365x1067x1365.jpg?h=adf63af4a7428d3984515bfca37c3485" alt="Laurane au bord de l'Oise">
+                <div class="gallery-overlay">
+                    <h3>Laurane au bord de l'Oise</h3>
+                    <p>Portrait • 2019</p>
+                </div>
+            </div>
+
+            <!-- Amandine en Urbex -->
+            <div class="gallery-item" data-category="urbex">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/df31d07b-24c5-40b8-8daa-a5407d0e77da_rwc_0x155x1365x1067x1365.jpg?h=66dbe8e4f8181dee2aa42741a256deab" alt="Amandine en Urbex">
+                <div class="gallery-overlay">
+                    <h3>Amandine en Urbex</h3>
+                    <p>Urbex • 2019</p>
+                </div>
+            </div>
+
+            <!-- Camille en Urbex -->
+            <div class="gallery-item" data-category="urbex">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/19e6170b-5e90-426c-bb41-84b3b26caec7_rwc_230x0x1637x1280x1637.jpg?h=2bd54d57c43ba09310c1c3b9ae942d58" alt="Camille en Urbex">
+                <div class="gallery-overlay">
+                    <h3>Camille en Urbex</h3>
+                    <p>Urbex • 2019</p>
+                </div>
+            </div>
+
+            <!-- Laurane en Urbex -->
+            <div class="gallery-item" data-category="urbex">
+                <img src="https://cdn.myportfolio.com/4bd4d841-95d5-48b2-970a-3556f3da105b/754f797c-5f3a-4cf7-a438-da77e81f7ddb_rwc_0x490x1365x1067x1365.jpg?h=135f5b05472368d7fbf139231398e3df" alt="Laurane en Urbex">
+                <div class="gallery-overlay">
+                    <h3>Laurane en Urbex</h3>
+                    <p>Urbex • 2019</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Mes Services</h2>
+        <p class="section-subtitle">Je propose différents types de séances photo adaptées à vos besoins et envies</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">👤</div>
+                <h3>Portraits</h3>
+                <p>Des portraits qui révèlent votre personnalité et votre beauté naturelle. Séances en studio ou en extérieur selon vos préférences.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">👗</div>
+                <h3>Mode & Fashion</h3>
+                <p>Shootings mode professionnels, lookbooks, collaborations avec créateurs. Mise en valeur de vos créations ou de votre style.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏚️</div>
+                <h3>Urbex</h3>
+                <p>Séances photo dans des lieux abandonnés pour un rendu artistique unique et atmosphérique.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎉</div>
+                <h3>Événements</h3>
+                <p>Couverture photo de vos événements : concours, soirées, mariages. Capturez chaque moment important.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos">
+        <h2 class="section-title">À Propos</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Kévin, Photographe Professionnel</h2>
+                <p>Basé à Laon dans les Hauts-de-France, je suis passionné par la photographie depuis plusieurs années. Ma spécialité ? Capturer l'émotion et la personnalité de chaque personne à travers l'objectif.</p>
+                
+                <p>Mon approche se veut naturelle et authentique. Que ce soit pour un portrait, une séance mode ou une exploration urbex, mon objectif est de créer des images qui vous ressemblent et qui racontent votre histoire.</p>
+                
+                <p>Je travaille régulièrement en collaboration avec des créateurs locaux comme l'Atelier BND et j'ai eu l'honneur de couvrir des événements prestigieux comme Miss Aisne 2023.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Photos réalisées</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Années d'expérience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <!-- Placeholder image - remplacez par votre photo -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Réserver une Séance</h2>
+        <p class="section-subtitle">Vous avez un projet photo ? Contactez-moi et discutons-en ensemble</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>contact@kevin-photographe.fr</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-details">
+                        <h3>Téléphone</h3>
+                        <p>06 XX XX XX XX</p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Localisation</h3>
+                        <p>Laon, Hauts-de-France</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Type de séance *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="portrait">Portrait</option>
+                            <option value="mode">Mode & Fashion</option>
+                            <option value="urbex">Urbex</option>
+                            <option value="evenement">Événement</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Décrivez votre projet..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Envoyer ma demande</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kévin Photographe</h3>
+                <p>Photographe professionnel basé à Laon, spécialisé en portraits, mode, urbex et événements.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="#services">Portraits</a>
+                <a href="#services">Mode & Fashion</a>
+                <a href="#services">Urbex</a>
+                <a href="#services">Événements</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@kevin-photographe.fr</p>
+                <p>Tel: 06 XX XX XX XX</p>
+                <p>Laon, Hauts-de-France</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Kévin Photographe. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightboxClose">×</div>
+        <div class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</div>
+        <div class="lightbox-nav lightbox-next" id="lightboxNext">›</div>
+        <div class="lightbox-content">
+            <img src="" alt="Photo" id="lightboxImage">
+        </div>
+    </div>
+
+    <script>
+        // Menu mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Portfolio filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        let currentImageIndex = 0;
+        const images = Array.from(galleryItems);
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                openLightbox();
+            });
+        });
+
+        function openLightbox() {
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            updateLightboxImage();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightboxImage() {
+            const currentItem = images[currentImageIndex];
+            const img = currentItem.querySelector('img');
+            lightboxImage.src = img.src;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lightboxPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            updateLightboxImage();
+        });
+
+        lightboxNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            updateLightboxImage();
+        });
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxPrev.click();
+            if (e.key === 'ArrowRight') lightboxNext.click();
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Merci pour votre demande ! Je vous répondrai dans les plus brefs délais par email ou téléphone.');
+            e.target.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.gallery-item, .service-card, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
