@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Témoignages - Kévin Photographe</title>
+    <meta name="description" content="Découvrez les avis de mes clients satisfaits. Plus de 250 clients m'ont fait confiance pour immortaliser leurs moments précieux.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Testimonials specific styles */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 3rem;
+            border-left: 4px solid var(--accent-gold);
+            transition: all 0.4s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .testimonial-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary-dark);
+        }
+
+        .testimonial-service {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .star {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-light);
+            line-height: 1.9;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Rating stats */
+        .rating-stats {
+            background: var(--background-light);
+            padding: 4rem 0;
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .rating-stat {
+            padding: 2rem;
+        }
+
+        .rating-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Form Section */
+        .review-cta {
+            background: var(--primary-dark);
+            color: white;
+            padding: 6rem 4rem;
+            text-align: center;
+        }
+
+        .review-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .review-cta p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .review-platforms {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .platform-link:hover {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .platform-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Featured testimonial */
+        .featured-testimonial {
+            background: var(--accent-gold);
+            color: white;
+            padding: 4rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .featured-testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 8rem;
+            font-family: 'Cormorant Garamond', serif;
+            opacity: 0.2;
+        }
+
+        .featured-testimonial p {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-author {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 1200px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .testimonial-card {
+                padding: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-testimonial {
+                padding: 3rem 2rem;
+            }
+
+            .featured-testimonial p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index.html" class="logo">Kévin</a>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="a-propos.html">À Propos</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="temoignages.html" class="active">Témoignages</a></li>
+                <li><a href="galerie-client.html">Galerie Client</a></li>
+                <li><a href="contact.html" class="cta-nav">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div>
+            <p class="hero-subtitle">Ils Me Font Confiance</p>
+            <h1>TÉMOIGNAGES</h1>
+            <p>Plus de 250 clients satisfaits depuis 2019</p>
+        </div>
+    </section>
+
+    <!-- Rating Stats -->
+    <section class="rating-stats">
+        <div class="stats-container">
+            <div class="rating-stat">
+                <span class="rating-number">4.9/5</span>
+                <span class="rating-label">Note Moyenne</span>
+            </div>
+            <div class="rating-stat">
+                <span class="rating-number">250+</span>
+                <span class="rating-label">Clients Satisfaits</span>
+            </div>
+            <div class="rating-stat">
+                <span class="rating-number">98%</span>
+                <span class="rating-label">Recommandations</span>
+            </div>
+            <div class="rating-stat">
+                <span class="rating-number">100%</span>
+                <span class="rating-label">Engagement Qualité</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Testimonial -->
+    <section style="padding: 4rem 4rem 0;">
+        <div class="featured-testimonial">
+            <p>"Kévin a un talent exceptionnel pour capturer l'émotion et l'authenticité. Nos photos de mariage sont bien au-delà de nos attentes. Un vrai artiste !"</p>
+            <div class="featured-author">— Sophie & Thomas • Mariage 2024</div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section>
+        <div class="section-header">
+            <p class="section-label">Avis Clients</p>
+            <h2 class="section-title">Ce Que Disent Mes Clients</h2>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">A</div>
+                    <div class="testimonial-info">
+                        <h3>Alyson</h3>
+                        <p class="testimonial-service">Séance Portrait</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Une séance photo exceptionnelle ! Kévin a su me mettre à l'aise dès les premières minutes. Il a un œil incroyable pour trouver les bons angles et la bonne lumière. Les photos sont magnifiques et d'une qualité professionnelle impressionnante. Je recommande à 100% !"</p>
+                <p class="testimonial-date">Avril 2024</p>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">C</div>
+                    <div class="testimonial-info">
+                        <h3>Camille</h3>
+                        <p class="testimonial-service">Séance Couple</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Professionnel, créatif et à l'écoute. Nos photos de couple sont sublimes et nous rappellent chaque jour la magie de cet instant. Kévin a réussi à capturer notre complicité de manière authentique et naturelle. Un immense merci !"</p>
+                <p class="testimonial-date">Février 2024</p>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">S</div>
+                    <div class="testimonial-info">
+                        <h3>Stéphanie - Atelier BND</h3>
+                        <p class="testimonial-service">Photographie Mode</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Un talent fou ! Les photos de notre collaboration pour Miss Aisne étaient parfaites. Kévin a un œil artistique remarquable et une grande maîtrise technique. Ses photos ont vraiment mis en valeur nos créations. Une collaboration enrichissante !"</p>
+                <p class="testimonial-date">Novembre 2023</p>
+            </div>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">J</div>
+                    <div class="testimonial-info">
+                        <h3>Johanna</h3>
+                        <p class="testimonial-service">Séance Portrait</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"J'avais besoin de photos professionnelles pour ma recherche d'emploi. Kévin a dépassé toutes mes attentes ! Les photos sont élégantes, naturelles et vraiment à mon image. J'ai reçu de nombreux compliments et je suis convaincue qu'elles m'ont aidée dans mes démarches."</p>
+                <p class="testimonial-date">Septembre 2023</p>
+            </div>
+
+            <!-- Testimonial 5 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">L</div>
+                    <div class="testimonial-info">
+                        <h3>Laura</h3>
+                        <p class="testimonial-service">Reportage Mariage</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Kévin a photographié notre mariage et nous sommes absolument ravis du résultat ! Il a su se faire discret tout en capturant tous les moments importants et les émotions. Ses photos racontent parfaitement l'histoire de notre journée. Un grand professionnel !"</p>
+                <p class="testimonial-date">Juillet 2023</p>
+            </div>
+
+            <!-- Testimonial 6 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">M</div>
+                    <div class="testimonial-info">
+                        <h3>Marie</h3>
+                        <p class="testimonial-service">Séance Grossesse</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Moment magique immortalisé avec talent ! Kévin a su créer une atmosphère douce et bienveillante pour ma séance grossesse. Les photos sont magnifiques, poétiques et pleines d'émotion. Un souvenir précieux que nous chérirons toute notre vie."</p>
+                <p class="testimonial-date">Mai 2023</p>
+            </div>
+
+            <!-- Testimonial 7 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">T</div>
+                    <div class="testimonial-info">
+                        <h3>Thomas</h3>
+                        <p class="testimonial-service">Séance Urbex</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Expérience unique et créative ! J'adore l'urbex et Kévin a parfaitement compris ma vision. Les photos sont spectaculaires, avec une ambiance incroyable. Son sens artistique et sa maîtrise de la lumière font vraiment la différence. Hâte de refaire une séance !"</p>
+                <p class="testimonial-date">Mars 2023</p>
+            </div>
+
+            <!-- Testimonial 8 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">E</div>
+                    <div class="testimonial-info">
+                        <h3>Emma</h3>
+                        <p class="testimonial-service">Séance Portrait</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Je n'aimais pas me faire prendre en photo, mais Kévin a changé ma perception ! Il m'a mise en confiance et a su révéler le meilleur de moi-même. Les photos sont sublimes et je me reconnais vraiment. Merci pour ce moment et pour ces merveilleux souvenirs."</p>
+                <p class="testimonial-date">Janvier 2023</p>
+            </div>
+
+            <!-- Testimonial 9 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">N</div>
+                    <div class="testimonial-info">
+                        <h3>Nicolas</h3>
+                        <p class="testimonial-service">Reportage Entreprise</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Nous avons fait appel à Kévin pour des photos corporate de notre équipe. Résultat impeccable ! Les photos sont professionnelles, dynamiques et reflètent parfaitement l'esprit de notre entreprise. Livraison rapide et service au top. Je recommande vivement !"</p>
+                <p class="testimonial-date">Décembre 2022</p>
+            </div>
+
+            <!-- Testimonial 10 -->
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="testimonial-avatar">C</div>
+                    <div class="testimonial-info">
+                        <h3>Clarisse</h3>
+                        <p class="testimonial-service">Séance Portrait</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <p class="testimonial-text">"Séance photo sur la Montagne Couronnée de Laon, un lieu magnifique et des photos encore plus belles ! Kévin a un vrai talent pour choisir les lieux et jouer avec la lumière naturelle. Le rendu est absolument magnifique. Une expérience que je recommande à tous !"</p>
+                <p class="testimonial-date">Octobre 2022</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review CTA -->
+    <section class="review-cta">
+        <h2>Vous Avez Travaillé Avec Moi ?</h2>
+        <p>Votre avis m'aide à m'améliorer et aide d'autres personnes à me découvrir. Prenez quelques instants pour partager votre expérience !</p>
+        
+        <div class="review-platforms">
+            <a href="#" class="platform-link">
+                <span class="platform-icon">📷</span>
+                <span>Laisser un avis sur Instagram</span>
+            </a>
+            <a href="#" class="platform-link">
+                <span class="platform-icon">📘</span>
+                <span>Laisser un avis sur Facebook</span>
+            </a>
+            <a href="contact.html" class="platform-link">
+                <span class="platform-icon">✉️</span>
+                <span>M'envoyer un message</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à Vivre Votre Propre Expérience ?</h2>
+            <p>Rejoignez mes 250+ clients satisfaits</p>
+            <a href="contact.html" class="cta-button">Réserver une séance</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Kévin Photographe</h3>
+                <p>Photographe professionnel basé à Laon, spécialisé en portraits artistiques, photographie de mode et reportages.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <a href="index.html">Accueil</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="a-propos.html">À Propos</a>
+                <a href="services.html">Services</a>
+                <a href="temoignages.html">Témoignages</a>
+                <a href="galerie-client.html">Galerie Client</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Prestations</h3>
+                <a href="services.html#portraits">Portraits Artistiques</a>
+                <a href="services.html#mode">Photographie de Mode</a>
+                <a href="services.html#urbex">Urbex & Artistique</a>
+                <a href="services.html#reportages">Reportages</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@kevin-photographe.fr</p>
+                <p>Tél: 06 XX XX XX XX</p>
+                <p>Laon, Hauts-de-France</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Kévin Photographe. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
